@@ -1,0 +1,320 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #E0E0E0;
+    --primary-color: #007bff; /* Standard Blue */
+    --accent-color: #7A00FF; /* Nebula Purple */
+    --accent-light: #A064FF;
+    --card-bg: #1E1E1E;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --gold-score: #FFD700; /* UNC Gold */
+    --green-score: #4CAF50; /* SUNC Green */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Added transition for smoother UI experience and animations */
+.rating-card, .feature-item, .detail-item, #downloadButton, h1 {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+header {
+    text-align: center;
+    padding: 40px 0 20px 0;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: var(--accent-light);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Animation for H1 on hover/focus */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+h1:hover {
+    animation: float 2s ease-in-out infinite;
+}
+
+.tagline {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 15px 0;
+}
+
+h2 {
+    color: var(--accent-light);
+    border-bottom: 2px solid var(--card-bg);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Overview */
+.overview p {
+    text-align: center;
+    font-size: 1.1em;
+    padding: 0 10px;
+}
+
+/* Rating Section */
+.rating-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
+    flex-wrap: wrap; 
+}
+
+.rating-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--accent-color);
+    width: 180px;
+}
+
+.rating-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+/* Score Pulse Animation */
+@keyframes scorePulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.score-display {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    line-height: 1;
+    animation: scorePulse 2s infinite ease-in-out;
+}
+
+/* Specific score colors */
+.rating-card.unc .score-display {
+    color: var(--gold-score);
+}
+.rating-card.sunc .score-display {
+    color: var(--green-score);
+}
+
+.source {
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* Features */
+.feature-grid {
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.feature-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(122, 0, 255, 0.3); /* Nebula glow effect */
+    border-left: 5px solid var(--accent-color);
+}
+/* Hover animation for feature items */
+.feature-item:hover {
+    transform: scale(1.03) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(122, 0, 255, 0.6);
+}
+
+.feature-item .icon {
+    font-size: 2em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.feature-item p {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* Documentation Section */
+.documentation p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    padding: 0 10px;
+}
+
+.doc-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.detail-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Soft blue glow */
+    border-right: 5px solid var(--primary-color);
+}
+/* Hover animation for documentation details */
+.detail-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+}
+
+.detail-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.detail-item p {
+    font-size: 0.9em;
+    color: #aaa;
+    text-align: left;
+}
+
+
+/* CTA */
+.cta {
+    text-align: center;
+    padding-top: 20px; /* Added padding */
+}
+
+/* New CTA elements */
+.cta-label {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.arrow-down {
+    font-size: 3em;
+    color: var(--accent-light);
+    animation: bounce 1.5s infinite; /* Animation for the arrow */
+    line-height: 0.5;
+    margin-bottom: 15px;
+    display: block;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+#downloadButton {
+    background-color: #4a4a4a; /* Dark gray for inactive state */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 8px;
+    cursor: not-allowed;
+    width: 100%;
+    max-width: 300px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+}
+
+#downloadButton:hover {
+    background-color: #555555;
+    transform: none; /* Override previous lift effect */
+}
+#downloadButton:active {
+    transform: none;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid var(--card-bg);
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Media query for slightly wider mobile screens / tablets */
+@media (min-width: 480px) {
+    .feature-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .feature-item {
+        flex: 1 1 45%; /* Two items per row */
+        max-width: 45%;
+    }
+    
+    .doc-details {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .detail-item {
+        flex: 1 1 48%;
+        max-width: 48%;
+    }
+}
+
+@media (min-width: 600px) {
+    .feature-item {
+        max-width: 30%; /* Three items per row */
+    }
+}
